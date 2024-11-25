@@ -35,8 +35,6 @@ def signup():
         password = request.form["password"]
         if authpass(password) == True:
             pass
-        else: 
-            
         DoB = request.form["dob"]
         dbHandler.insertUser(username, password, DoB)
         return render_template("/index.html")
@@ -62,17 +60,17 @@ def home():
     else:
         return render_template("/index.html")
 
-def authpass(password: str):
+def authpass(password):
     if len(password) < 8:
         return False
     if len(password) > 12:
         return False
     if not password.isalnum():
         return False
-    pass1 = password(list)
+    pass1 = list(password)
     i = 0
     for x in pass1:
-        if x.isnum():
+        if x.isnumeric():
             i += 1
     if i < 3:
         return False
@@ -82,7 +80,7 @@ def authpass(password: str):
             i += 1
     if b < 5 :
         return False
-return True
+    return True
 
 
 if __name__ == "__main__":
