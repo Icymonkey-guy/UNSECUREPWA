@@ -33,6 +33,10 @@ def signup():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+        if authpass(password) == True:
+            pass
+        else: 
+            
         DoB = request.form["dob"]
         dbHandler.insertUser(username, password, DoB)
         return render_template("/index.html")
@@ -58,8 +62,31 @@ def home():
     else:
         return render_template("/index.html")
 
+def authpass(password: str):
+    if len(password) < 8:
+        return False
+    if len(password) > 12:
+        return False
+    if not password.isalnum():
+        return False
+    pass1 = password(list)
+    i = 0
+    for x in pass1:
+        if x.isnum():
+            i += 1
+    if i < 3:
+        return False
+    b = 0
+    for x in pass1:
+        if x.isalpha():
+            i += 1
+    if b < 5 :
+        return False
+return True
+
 
 if __name__ == "__main__":
     app.config["TEMPLATES_AUTO_RELOAD"] = True
     app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
     app.run(debug=True, host="0.0.0.0", port=5000)
+

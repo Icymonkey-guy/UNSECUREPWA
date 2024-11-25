@@ -32,3 +32,4 @@ if __name__ == '__main__':
         print(f"Not a valid password because it has {inst.args}.")
     except Exception as inst:
         print(f"Log as a {type(inst)}")
+

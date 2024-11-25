@@ -95,3 +95,13 @@ def validate_number(number: str) -> bool:
 # Function to salt a hash input
 def salt_and_hash(password: str) -> bytes:
     return  # to be implemented
+
+def passauth(password: str) -> bytes:
+    if not issubclass(type(password), str):
+            raise TypeError("Expected a string")
+    if len(password) > 12:
+        raise TypeError("E")
+    if not name.isalnum():
+        return False
+    if not 
+    
